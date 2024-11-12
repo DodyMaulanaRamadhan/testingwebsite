@@ -1,79 +1,155 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    line-height: 1.6;
 }
 
+h1, h2, h3, p {
+    margin: 0;
+}
+
+/* Header Styles */
 header {
-    background-color: #007bff;
+    background-image: url('logowebsite.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 60px 0;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+header h2 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+header p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.text-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+}
+
+.button-container {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add margin to separate from text */
 }
 
 .contact-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
+    display: inline-block; /* Change to inline-block to allow width control */
+    margin: 0 auto; /* Center the button */
+    padding: 15px 30px; /* Adjust padding as needed */
     background-color: #28a745;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 1;
+    font-size: 1.2em; /* Adjust font size as needed */
+    text-align: center; /* Center the text in the button */
+    max-width: 250px; /* Set a maximum width for the button */
+    width: 100%; /* Allow the button to take full width up to max-width */
 }
 
 .contact-button:hover {
     background-color: #218838;
+    transform: scale(1.05);
 }
 
+/* Main Styles */
 main {
     padding: 20px;
 }
 
 .services-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
+/* Service Card Styles */
 .service {
     background-color: white;
     margin: 10px;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 280px; /* Adjusted for better responsiveness */
-    flex: 1 1 calc(33.333% - 20px); /* Responsive sizing */
-    box-sizing: border-box;
-    transition: transform 0.3s;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition for smooth effect */
 }
 
-.service:hover {
-    transform: translateY(-5px);
+.service.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
 }
 
 .service img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.service img:hover {
+    transform: scale(1.05);
+}
+
+.service h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+    color: #333;
 }
 
 .description {
-    display: none; /* Hide full description by default */
+    display: none;
 }
 
 .description.visible {
-    display: block; /* Show full description when visible */
+    display: block;
 }
 
 .description.short {
-    display: block; /* Show short description */
+    display: block;
 }
 
 .description.hidden {
-    display: none; /* Hide short description when full is visible */
+    display: none;
 }
 
 .read-more {
@@ -84,23 +160,181 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1em;
 }
 
 .read-more:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-/* Media Queries for responsive design */
-@media (max-width: 768px) {
-    .service {
-        flex: 1 1 calc(50% - 20px); /* 2 services per row on tablets */
+/* Options Section Styles */
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.option {
+    background-color: #28a745;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    header h1 {
+        font-size: 2.5em;
     }
- ```css
+
+    header h2 {
+        font-size: 2em;
+    }
+
+    .contact-button {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+
+    .service {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header h2 {
+        font-size: 1.5em;
+    }
+
+    .contact-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .service {
+        padding: 15px;
+    }
+
+    .services-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
 }
 
 @media (max-width: 480px) {
-    .service {
-        flex: 1 1 100%; /* 1 service per row on mobile */
+    header h1 {
+        font-size: 1.5em;
     }
+
+    header h2 {
+        font-size: 1.2em;
+    }
+
+    .contact-button {
+        padding: 8px 16px;
+        font-size: 0.8em;
+    }
+
+    .service {
+        padding: 10px;
+    }
+
+    .services-container {
+        grid-template-columns: 1fr; /* Stack services on small screens */
+    }
+}
+
+/* Additional Styles for Buttons and Links */
+button, a {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover, a:hover {
+    opacity: 0.8;
+}
+
+/* Animation for Fade-in Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards; /* Slowed down for better visibility */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007bff; /* Changed to blue */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Darker blue on hover */
+}
+
+/* Card Hover Effect */
+.service:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: calc(1.5rem + 2vw);
+}
+
+h2 {
+    font-size: calc(1.2rem + 1.5vw);
+}
+
+p {
+    font-size: calc(0.9rem + 0.5vw);
+}
+
+/* Accessibility Styles */
+a:focus, button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Fade-in effect for services */
+.service {
+    animation: fadeIn 0.8s ease forwards; /* Added fade-in effect */
 }
